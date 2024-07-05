@@ -1,0 +1,35 @@
+name: Deploy to GitHub Pages
+
+on:
+    push:
+        branches:
+            - main # 또는 배포를 트리거할 다른 브랜치
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v2
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v2
+              with:
+                  node-version: "21" # 또는 필요한 Node.js 버전
+
+            - name: Install dependencies
+              run: npm install
+
+            - name: Build project
+              run: npm run build
+
+            - name: Configure git
+              run: |
+                  git config --global user.email "rjs8833@gmail.com"
+                  git config --global user.name "JiSeungRyu"
+
+            - name: Deploy to GitHub Pages
+              run: npm run deploy
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
