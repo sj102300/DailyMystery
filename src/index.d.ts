@@ -1,8 +1,9 @@
-interface Suspect {
+declare interface Suspect {
+    suspectNumber: number;
     suspectName: string;
-    suspectAge: number;
     suspectGender: string;
+    suspectImageUrl: string;
+    suspectAge: number;
     suspectOccupation: string;
-    suspectTrait: string;
-    suspectImage?: string;
+    suspectInfo: string;
 }
