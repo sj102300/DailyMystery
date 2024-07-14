@@ -1,7 +1,14 @@
 import { Link } from "react-router-dom";
 import CardComponent from "./component/CardComponent";
 
+// import { getSuspects } from "../apis/getSuspects";
+
 export default function Main() {
+    const userId = 252;
+    if (!localStorage.getItem("userId")) {
+        localStorage.setItem("userId", String(userId));
+    }
+
     return (
         <div className="z-10 flex flex-col items-center w-full gap-6 py-32 h-dvh">
             <CardComponent />
