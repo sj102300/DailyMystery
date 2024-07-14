@@ -1,19 +1,3 @@
-<<<<<<< HEAD
-import "./App.css";
-
-function App() {
-
-    return (
-        <>
-            <div>
-                와앙
-            </div>
-        </>
-    );
-}
-
-export default App;
-=======
 import { Route, Routes, useLocation } from "react-router-dom";
 import backgroundImageUrl from "./imgs/background_image.png";
 import Main from "./Main/Main.tsx";
@@ -56,4 +40,3 @@ export default function App() {
         </div>
     );
 }
->>>>>>> jiSeung
