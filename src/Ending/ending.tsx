@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { Result } from './result.type';
 import { GetResult } from "./getResult";
 
-
-export default function Ending(){
+export default function Ending() {
 
     let [result, setResult] = useState<Result | null>(null)
 
@@ -13,12 +12,11 @@ export default function Ending(){
             setResult(data);
         }
         fetchData();
-        console.log(result);
     }, [])
 
     return (
         <div>
-            hello
+            {result?.caseBackground}
         </div>
     );
 }
