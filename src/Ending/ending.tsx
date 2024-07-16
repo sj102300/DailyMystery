@@ -14,7 +14,11 @@ export default function Ending(){
         }
         fetchData();
         console.log(result);
-    },[])
+    }, [])
 
-    return <></>;
+    return (
+        <div>
+            hello
+        </div>
+    );
 }

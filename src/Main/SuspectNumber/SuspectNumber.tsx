@@ -5,6 +5,7 @@ import { useStore } from "zustand";
 import storeSuspectInfor from "../../client/suspectInfor";
 import { getSuspects } from "../../apis/getSuspects";
 import { postSuspectsQuestion } from "../../apis/postSuspectsQuestion";
+import { Suspect } from "../..";
 
 export default function SuspectNumber() {
     const { suspectNumber } = useParams();
