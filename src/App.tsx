@@ -8,6 +8,7 @@ import Intro from "./Intro/intro.tsx";
 import { useEffect } from "react";
 import Story from "./Story/story.tsx";
 import Evidence from "./Main/Evidences/Evidence.tsx";
+import Ending from "./Ending/Ending.tsx";
 
 export default function App() {
     const location = useLocation();
@@ -59,6 +60,7 @@ export default function App() {
                     />
                     <Route path="/main/evidence" element={<Evidence />} />
                     <Route path="deduction" element={<Deduction />} />
+                    <Route path="/ending" element={<Ending />} />
                 </Routes>
             </div>
         </div>
