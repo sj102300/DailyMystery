@@ -1,12 +1,31 @@
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import backgroundImageUrl from "./imgs/background_image.png";
 import Main from "./Main/Main.tsx";
 import Aside from "./Main/Aside.tsx";
 import Deduction from "./Deduction/Deduction.tsx";
 import SuspectNumber from "./Main/SuspectNumber/SuspectNumber.tsx";
+import Intro from "./Intro/intro.tsx";
+import { useEffect } from "react";
 
 export default function App() {
     const location = useLocation();
+    let navigate = useNavigate();
+
+    useEffect(() => {
+        //12시 넘어가면 새 문제 풀수있음. 초기화 과정
+        let today = new Date().toISOString().split('T')[0];
+        let currentDate = localStorage.getItem('currentDate');
+        if (currentDate !== today) {
+            localStorage.clear()
+        }
+        localStorage.setItem('currentDate', today);
+
+        //유저가 풀던 기록있으면 바로 메인페이지로 
+        let userId = Number(localStorage.getItem('userId'));
+        if (userId && userId !== -1) {
+            navigate('/main');
+        }
+    }, [])
 
     return (
         <div className="relative flex w-full h-full min-h-screen">
@@ -29,6 +48,7 @@ export default function App() {
                 }}
             >
                 <Routes>
+                    <Route path="/" element={<Intro />} />
                     <Route path="main" element={<Main />} />
                     <Route
                         path="main/:suspectNumber"
