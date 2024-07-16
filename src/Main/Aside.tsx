@@ -11,11 +11,15 @@ export default function Aside() {
                     심문하기
                 </div>
             </Link>
-            <div className="flex items-center justify-center flex-1 p-5 bg-white border-l-2 cursor-pointer border-y-2 rounded-l-3xl border-mainColor">
-                <div className="text-center font-[Pretendard-bold] text-mainColor">
-                    사건현장
+            <Link
+                to={"/main/evidence"}
+            >
+                <div className="flex items-center justify-center flex-1 p-5 bg-white border-l-2 cursor-pointer border-y-2 rounded-l-3xl border-mainColor">
+                    <div className="text-center font-[Pretendard-bold] text-mainColor">
+                        사건현장
+                    </div>
                 </div>
-            </div>
+            </Link>
         </div>
     );
 }
