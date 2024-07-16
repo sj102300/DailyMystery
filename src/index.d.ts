@@ -1,4 +1,4 @@
-declare interface Suspect {
+export interface Suspect {
     suspectNumber: number;
     suspectName: string;
     suspectGender: string;
@@ -8,7 +8,7 @@ declare interface Suspect {
     suspectInfo: string;
 }
 
-declare interface responseDTO<T>{
+export interface responseDTO<T>{
     statusCode: number;
     message: string;
     data: T;
