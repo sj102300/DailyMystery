@@ -6,6 +6,8 @@ import Deduction from "./Deduction/Deduction.tsx";
 import SuspectNumber from "./Main/SuspectNumber/SuspectNumber.tsx";
 import Intro from "./Intro/intro.tsx";
 import { useEffect } from "react";
+import Story from "./Story/story.tsx";
+import Evidence from "./Main/Evidences/Evidence.tsx";
 
 export default function App() {
     const location = useLocation();
@@ -49,11 +51,13 @@ export default function App() {
             >
                 <Routes>
                     <Route path="/" element={<Intro />} />
+                    <Route path="/story" element={<Story />} />
                     <Route path="main" element={<Main />} />
                     <Route
                         path="main/:suspectNumber"
                         element={<SuspectNumber />}
                     />
+                    <Route path="/main/evidence" element={<Evidence />} />
                     <Route path="deduction" element={<Deduction />} />
                 </Routes>
             </div>

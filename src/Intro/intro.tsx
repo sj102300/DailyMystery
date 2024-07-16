@@ -4,20 +4,17 @@ import { getDMInfo } from "./getIntro";
 import { DMInfo } from "./intro.types";
 import { useNavigate } from "react-router-dom";
 import { PostNickname } from "./postNickname";
+import { checkIsSolved } from "../checkIsSolved";
 
 export default function Intro() {
 
     let navigate = useNavigate();
 
-    let [isSolved, setIsSolved] = useState<'True' | 'False'>('False');
-    if (!isSolved) return <div>로딩즁...</div>
+    let [isSolved, setIsSolved] = useState<Boolean>(false);
 
     useEffect(() => {
         //풀었으면 더이상 못풀게
-        if (localStorage.getItem('isSolved') === 'True') {
-            setIsSolved('True');
-            return;
-        }
+        setIsSolved(checkIsSolved());
 
         //오늘의 미스터리 정보 가져오기
         let fetchData = async () => {
@@ -40,7 +37,7 @@ export default function Intro() {
             let postData = await PostNickname(nickname);
             if (postData !== -1) {
                 localStorage.setItem('userId', String(postData));
-                navigate('/main');
+                navigate('/story');
             }
         }
     }
@@ -51,7 +48,7 @@ export default function Intro() {
             <Container>
                 <img src=".././imgs/reason1_image.png" alt="로고사진" width="200px" height="200px" />
                 {
-                    isSolved === 'True' ?
+                    isSolved ?
                         <>
                             <Box>
                                 <h1 className="text-3xl text-black">DM: Daily Mystery</h1>

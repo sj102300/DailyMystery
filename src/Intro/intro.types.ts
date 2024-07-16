@@ -1,6 +1,3 @@
-export interface IntroData {
-}
-
 export interface DMInfo{
     weather: string;
     place: string;

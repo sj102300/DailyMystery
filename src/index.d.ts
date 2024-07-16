@@ -7,3 +7,9 @@ declare interface Suspect {
     suspectOccupation: string;
     suspectInfo: string;
 }
+
+export interface responseDTO<T>{
+    statusCode: number;
+    message: string;
+    data: T;
+}

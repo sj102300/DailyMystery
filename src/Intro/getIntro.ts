@@ -1,15 +1,12 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
-import { DMInfo, Victim } from "./intro.types";
+import { DMInfo } from "./intro.types";
+import { responseDTO } from "..";
 
 
 export async function getDMInfo(): Promise<DMInfo> {
 
     try{
-        let response: AxiosResponse<{
-            statusCode: number;
-            message: string;
-            data: DMInfo;
-        }> = await axios.get(`${import.meta.env.VITE_REACT_APP_BACK_URL}/api/main`);
+        let response: AxiosResponse<responseDTO<DMInfo>> = await axios.get(`${import.meta.env.VITE_REACT_APP_BACK_URL}/api/main`);
         if (response.data.statusCode === 200) {
             return response.data.data;
         }
@@ -31,18 +28,3 @@ export async function getDMInfo(): Promise<DMInfo> {
     }
 }
 
-
-
-export async function getVictim(): Promise<Victim | undefined> {
-
-    try {
-        const response: AxiosResponse<Victim> = await axios.get(`${import.meta.env.VITE_REACT_APP_BACK_URL}/api/main`);
-
-        if (response.status === 200) {
-            return response.data;
-        }
-
-    } catch (error) {
-        console.log(error);
-    }
-}
