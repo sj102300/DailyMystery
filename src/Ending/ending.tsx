@@ -13,6 +13,7 @@ export default function Ending(){
             setResult(data);
         }
         fetchData();
+        console.log(result);
     },[])
 
     return <></>;

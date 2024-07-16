@@ -1,6 +1,7 @@
 import { useStore } from "zustand";
 import storeSuspectInfor from "../../../client/suspectInfor";
 import { useParams } from "react-router-dom";
+import { Suspect } from "../../..";
 
 export default function SuspectInfor() {
     const { suspectNumber } = useParams();
