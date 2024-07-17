@@ -8,8 +8,8 @@ import Intro from "./Intro/intro.tsx";
 import { useEffect, useState } from "react";
 import Story from "./Story/story.tsx";
 import Evidence from "./Main/Evidences/Evidence.tsx";
-import Ending from "./Ending/Ending.tsx";
 import { GetBackgroundImage } from "./apis/getBackground.ts";
+import EndingPage from "./Ending/EndingPage.tsx";
 
 export default function App() {
     const location = useLocation();
@@ -72,7 +72,7 @@ export default function App() {
                     />
                     <Route path="/main/evidence" element={<Evidence />} />
                     <Route path="/main/deduction" element={<Deduction />} />
-                    <Route path="/ending" element={<Ending />} />
+                    <Route path="/ending" element={<EndingPage />} />
                 </Routes>
             </div>
         </div>

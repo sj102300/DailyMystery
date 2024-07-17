@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Result } from './result.type';
 import { GetResult } from "./getResult";
 
-export default function Ending() {
+export default function EndingPage() {
 
     let [result, setResult] = useState<Result | null>(null)
 
