@@ -29,11 +29,8 @@ export default function SuspectNumber() {
             setInputValue("");
             setChatList((prevList) => [...prevList, question]);
             const result = await postSuspectsQuestion(stringToNumber, question);
-<<<<<<< HEAD
-
-=======
             console.log(result);
->>>>>>> 21c9b68e373a89309541ae618ca28cceb6d37490
+
             // if(result){
             //     setChatList(chatList[chatList.length - 1])
             // }
@@ -48,11 +45,7 @@ export default function SuspectNumber() {
 
     useEffect(() => {
         const fetchData = async () => {
-<<<<<<< HEAD
             const result = await getSuspectsNumber(stringToNumber);
-=======
-            const result = await getSuspects(stringToNumber);
->>>>>>> 21c9b68e373a89309541ae618ca28cceb6d37490
 
             if (result.statusCode === 200) {
                 setFirstLine(result.data.firstLine);
