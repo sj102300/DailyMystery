@@ -11,6 +11,7 @@ export async function postSuspectsQuestion(
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+
                     // "Content-Type": "text/event-stream" 헤더를 원한다면 주석을 해제하세요
                 },
                 body: JSON.stringify({
@@ -21,7 +22,11 @@ export async function postSuspectsQuestion(
         );
 
         if (response.ok && response.body) {
+<<<<<<< HEAD
+            return response;
+=======
             const reader = response.body
+
                 ?.pipeThrough(new TextDecoderStream())
                 .getReader();
 
@@ -48,7 +53,9 @@ export async function postSuspectsQuestion(
                             return data.choices[0].delta.content;
                     }
                 }
+
             }
+>>>>>>> cb00040184a86b88455ff40e1edba13e624bf612
         }
     } catch (error) {
         console.log(error);

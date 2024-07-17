@@ -22,7 +22,7 @@ export default function SuspectInfor() {
                 <div className="font-[Pretendard-SemiBold]  text-xl">{`${suspect.suspectName} ${suspect.suspectAge}세 ${suspect.suspectGender}`}</div>
                 <div className="">{`직업 - ${suspect.suspectOccupation}`}</div>
                 <div className="font-[Pretendard-SemiBold]">특이사항</div>
-                <div className="">{suspect.suspectInfo}</div>
+                <div className="">{suspect.suspectSpeciality}</div>
             </div>
         </div>
     );

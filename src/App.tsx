@@ -11,6 +11,7 @@ import Evidence from "./Main/Evidences/Evidence.tsx";
 import { GetBackgroundImage } from "./apis/getBackground.ts";
 import EndingPage from "./Ending/EndingPage.tsx";
 
+
 export default function App() {
     const location = useLocation();
     let navigate = useNavigate();
@@ -19,19 +20,20 @@ export default function App() {
 
     useEffect(() => {
         //12시 넘어가면 새 문제 풀수있음. 초기화 과정
-        let today = new Date().toISOString().split('T')[0];
-        let currentDate = localStorage.getItem('currentDate');
+        let today = new Date().toISOString().split("T")[0];
+        let currentDate = localStorage.getItem("currentDate");
         if (currentDate !== today) {
-            localStorage.clear()
+            localStorage.clear();
         }
-        localStorage.setItem('currentDate', today);
+        localStorage.setItem("currentDate", today);
 
-        //유저가 풀던 기록있으면 바로 메인페이지로 
-        let userId = Number(localStorage.getItem('userId'));
+        //유저가 풀던 기록있으면 바로 메인페이지로
+        let userId = Number(localStorage.getItem("userId"));
         if (userId && userId !== -1) {
-            navigate('/main');
+            navigate("/main");
         }
-    }, [])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
 
     useEffect(()=>{
