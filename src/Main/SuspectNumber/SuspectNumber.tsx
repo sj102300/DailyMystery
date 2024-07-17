@@ -31,11 +31,6 @@ export default function SuspectNumber() {
             const result = await postSuspectsQuestion(stringToNumber, question);
             console.log(result);
 
-            // if(result){
-            //     setChatList(chatList[chatList.length - 1])
-            // }
-        }
-    };
 
     useEffect(() => {
         if (chatListRef.current) {
@@ -45,7 +40,9 @@ export default function SuspectNumber() {
 
     useEffect(() => {
         const fetchData = async () => {
+
             const result = await getSuspectsNumber(stringToNumber);
+
 
             if (result.statusCode === 200) {
                 setFirstLine(result.data.firstLine);
