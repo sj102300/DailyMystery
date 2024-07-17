@@ -6,7 +6,7 @@ import { Evidence } from "./evidence.type";
 export async function GetEvidences(): Promise<Array<Evidence>> {
 
     try{
-        let response: AxiosResponse<responseDTO<Array<Evidence>>>
+        let response: AxiosResponse<responseDTO<Evidence[]>>
          = await axios.get(`${import.meta.env.VITE_REACT_APP_BACK_URL}/api/evidences`)
 
          if (response.data.statusCode === 200){
