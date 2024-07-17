@@ -8,7 +8,7 @@ import Intro from "./Intro/intro.tsx";
 import { useEffect } from "react";
 import Story from "./Story/story.tsx";
 import Evidence from "./Main/Evidences/Evidence.tsx";
-import Ending from "./Ending/Ending.tsx";
+import Ending from "./Ending/ending.tsx";
 
 export default function App() {
     const location = useLocation();
