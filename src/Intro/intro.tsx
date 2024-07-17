@@ -24,9 +24,9 @@ export default function Intro() {
         fetchData();
     }, [])
 
-    let [DMInfo, setDMInfo] = useState<DMInfo | null>(null)
+    let [DMInfo, setDMInfo] = useState<DMInfo | null>(null);
 
-    let nicknameRef = useRef<HTMLInputElement>(null)
+    let nicknameRef = useRef<HTMLInputElement>(null);
 
     const handleClick = async () => {
         let nickname = nicknameRef.current?.value || ''
@@ -46,7 +46,7 @@ export default function Intro() {
         <>
             <Background />
             <Container>
-                <img src=".././imgs/reason1_image.png" alt="로고사진" width="200px" height="200px" />
+                <img src="./logo.png" alt="로고사진" width="200px" height="200px" />
                 {
                     isSolved ?
                         <>
