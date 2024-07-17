@@ -28,6 +28,7 @@ export default function App() {
         if (userId && userId !== -1) {
             navigate("/main");
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

@@ -29,11 +29,56 @@ export default function SuspectNumber() {
             setInputValue("");
             setChatList((prevList) => [...prevList, question]);
             const result = await postSuspectsQuestion(stringToNumber, question);
-            console.log(result);
+            if (result !== undefined && result.body !== null) {
+                const reader = result.body.getReader();
+                const decoder = new TextDecoder("utf-8");
+                let buffer = "";
+                let currentMessage = "";
 
-            // if(result){
-            //     setChatList(chatList[chatList.length - 1])
-            // }
+                setChatList((prevList) => [...prevList, ""]);
+                // eslint-disable-next-line no-constant-condition
+                while (true) {
+                    const { value, done } = await reader.read();
+                    if (done) break;
+                    buffer += decoder.decode(value, { stream: true });
+
+                    const events = buffer.split("\n\n");
+                    buffer = events.pop() || "";
+
+                    events.forEach((eventString) => {
+                        if (eventString.startsWith("data:")) {
+                            try {
+                                const jsonString = eventString
+                                    .substring(5)
+                                    .trim();
+                                if (jsonString !== "[DONE]") {
+                                    const eventData = JSON.parse(jsonString);
+                                    console.log(
+                                        typeof eventData.choices[0].delta
+                                            .content,
+                                    );
+                                    if (
+                                        typeof eventData.choices[0].delta
+                                            .content === "string"
+                                    ) {
+                                        currentMessage +=
+                                            eventData.choices[0].delta.content;
+
+                                        setChatList((prevList) => {
+                                            const newList = [...prevList];
+                                            newList[newList.length - 1] =
+                                                currentMessage;
+                                            return newList;
+                                        });
+                                    }
+                                }
+                            } catch (e) {
+                                console.error("Failed to parse JSON:", e);
+                            }
+                        }
+                    });
+                }
+            }
         }
     };
 

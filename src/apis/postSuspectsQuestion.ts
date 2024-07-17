@@ -22,17 +22,7 @@ export async function postSuspectsQuestion(
         );
 
         if (response.ok && response.body) {
-            const reader = response.body
-
-                .pipeThrough(new TextDecoderStream())
-                .getReader();
-
-            // eslint-disable-next-line no-constant-condition
-            while (true) {
-                const { value, done } = await reader.read();
-                if (done) break;
-                console.log(value);
-            }
+            return response;
         }
     } catch (error) {
         console.log(error);
