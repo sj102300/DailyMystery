@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
 import styled, { keyframes } from "styled-components"
 import { checkIsSolved } from "../checkIsSolved"
-import { useNavigate } from "react-router-dom"
-import { GetStroy } from "./getStory";
+import { Link, useNavigate } from "react-router-dom"
+import { GetStroy, GetVictim } from "./getStory";
+import ReactDOM from 'react-dom';
 
 export default function Story() {
 
@@ -14,39 +15,64 @@ export default function Story() {
     }, [])
 
     let [storyLine, setStoryLine] = useState<Array<string>>([]);
+    let [victim, setVictim] = useState<string>('')
+
+    useEffect(()=>{
+        let fetchData = async () => {
+            let data = await GetVictim();
+            setVictim(`피해자 정보: ${data?.victimName}, ${data?.victimAge}세, ${data?.victimGender}, ${data?.victimOccupation}`)
+        }
+        fetchData();
+    })
 
     useEffect(() => {
         let fetchData = async () => {
             let data = await GetStroy();
             setStoryLine(data);
-            console.log(data);
         };
         fetchData();
     }, [])
 
-    let [currentLine, setCurrentLine] = useState<number>(0);
+    let [currentLine, setCurrentLine] = useState<number>(1);
+    let [next, setNext] = useState<Boolean>(false);
 
     useEffect(()=>{
-        if (currentLine < storyLine.length - 1) {
-            const timer = setTimeout(() => {
-              setCurrentLine(currentLine + 1);
-            }, storyLine[currentLine].length * 100 + 500);
-      
+        if (currentLine < storyLine.length){
+            const timer = setTimeout(()=>{
+                appendTextLine(storyLine[currentLine]);
+                setCurrentLine(prev => prev+1);
+                // setCurrentLine(prev => prev + 1);
+            }, (storyLine[currentLine].length / 25 + 1) * 1000)
             return () => clearTimeout(timer);
         }
-    },[currentLine])
+        else if (currentLine === storyLine.length) {
+            const timer = setTimeout(()=>{
+                setNext(true);
+            }, (storyLine[currentLine - 1].length / 25 + 1) * 1000)
+            return () => clearTimeout(timer);
+        }
+    },[currentLine, storyLine])
+
+    const appendTextLine = (sentence: string) => {
+        let box = document.getElementById('box');
+        let textLine = document.createElement('p');
+        ReactDOM.render(<TextLine charsnum={sentence.length}>{sentence}</TextLine>, textLine)
+        box?.appendChild(textLine);
+    }
 
     return (
-        <Background>
-            {
-                storyLine.slice(0, currentLine + 1).map((line, index) => (
-                    <TextLine key={index} charsnum={line.length}>
-                        {line}
-                        {index === currentLine && <Cursor />}
-                    </TextLine>
-                ))
-            }
-        </Background >
+        <>
+            <Background />
+            <Box id="box">
+                <TextLine charsnum={victim?.length}>
+                    {victim}
+                </TextLine>
+                {/* 여기에 다음 문장들 들어옴 */}
+                {
+                    next && <Link to='/main'><Next>&gt;</Next></Link>
+                }
+            </Box>
+        </>
     )
 }
 const Background = styled.div`
@@ -58,39 +84,71 @@ const Background = styled.div`
     background-color: #333232;
     opacity: 40%;
     z-index: -1;
+`
+const updown = keyframes`
+    from {
+        bottom: 50px;
+    }
+    to{
+        bottom: 40px;
+    }
+`
 
+const fadein = keyframes`
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+`
+
+const Next = styled.div`
+    font-size: 80px;
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    animation: ${updown} 1s linear 0s infinite alternate,
+            ${fadein} 0.5s ease-in forwards;
+
+`
+
+
+
+const Box = styled.div`
+    width: 800px;
+    height: 100dvh;
+    margin: 0 auto;
+    
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
 `
 
 const typing = keyframes`
-  from { width: 0 }
-  to {width: 600px}
+  from { 
+    width: 0;
+    white-space: nowrap;
+}
+
+ 80%{
+    width: 100%;
+    white-space: nowrap;
+}
+  to {
+    width: 100%;
+    white-space: normal;
+}
 `;
 
 const TextLine = styled.p<{ charsnum: number }>`
     font-size: x-large;
-    /* white-space: nowrap; */
-    /* overflow: hidden; */
     text-align: center;
+    overflow: hidden;
+
+    white-space: nowrap;
     animation: ${typing} ${({ charsnum }) => charsnum / 25}s steps(${({ charsnum }) => charsnum}, end) forwards;
-    /* width: ${({charsnum}) => charsnum + 6}ch;  //ch 기준 크기가 0이라서. 이정도 더해주면 자연스럽다. */
+
 `
-
-// 커서 컴포넌트 스타일
-const Cursor = styled.span`
-  display: inline-block;
-  background-color: black;
-  width: 2px;
-  height: 1em;
-  margin-left: 2px;
-  animation: blink 1s step-start infinite;
-
-  @keyframes blink {
-    50% {
-      opacity: 0;
-    }
-  }
-`;

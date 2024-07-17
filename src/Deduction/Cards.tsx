@@ -18,11 +18,11 @@ export default function SuspectsCard({ suspects, selected, setSelected }: {
                     />
                     {
                         val.suspectNumber === selected ?
-                            <div className="absolute top-0 left-0 object-cover h-full rounded-lg bg-black opacity-40">
+                            <div className="absolute flex justify-center items-center text-xl top-0 left-0 object-cover w-full h-full rounded-lg bg-black opacity-40">
                                 {`${val.suspectName} ${val.suspectAge}세 ${val.suspectGender}`}
                             </div> :
 
-                            <div className="absolute bottom-0 left-0 object-cover h-1/5 rounded-lg bg-black opacity-40">
+                            <div className="absolute flex justify-center items-center text-xl bottom-0 left-0 object-cover w-full h-1/5 rounded-lg bg-black opacity-40">
                                 {`${val.suspectName} ${val.suspectAge}세 ${val.suspectGender}`}
                             </div>
                     }
