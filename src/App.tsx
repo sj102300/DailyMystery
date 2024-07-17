@@ -8,7 +8,7 @@ import Intro from "./Intro/intro.tsx";
 import { useEffect } from "react";
 import Story from "./Story/story.tsx";
 import Evidence from "./Main/Evidences/Evidence.tsx";
-import Ending from "./Ending/Ending.tsx";
+import Ending from "./Ending/ending.tsx";
 
 export default function App() {
     const location = useLocation();
@@ -16,19 +16,19 @@ export default function App() {
 
     useEffect(() => {
         //12시 넘어가면 새 문제 풀수있음. 초기화 과정
-        let today = new Date().toISOString().split('T')[0];
-        let currentDate = localStorage.getItem('currentDate');
+        let today = new Date().toISOString().split("T")[0];
+        let currentDate = localStorage.getItem("currentDate");
         if (currentDate !== today) {
-            localStorage.clear()
+            localStorage.clear();
         }
-        localStorage.setItem('currentDate', today);
+        localStorage.setItem("currentDate", today);
 
-        //유저가 풀던 기록있으면 바로 메인페이지로 
-        let userId = Number(localStorage.getItem('userId'));
+        //유저가 풀던 기록있으면 바로 메인페이지로
+        let userId = Number(localStorage.getItem("userId"));
         if (userId && userId !== -1) {
-            navigate('/main');
+            navigate("/main");
         }
-    }, [])
+    }, []);
 
     return (
         <div className="relative flex w-full h-full min-h-screen">

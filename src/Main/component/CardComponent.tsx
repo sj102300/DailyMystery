@@ -1,11 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useStore } from "zustand";
 import storeSuspectInfor from "../../client/suspectInfor";
 import { Link } from "react-router-dom";
+import { getSuspects } from "../../apis/getSuspects";
 
 export default function CardComponent() {
-    const { suspectArray } = useStore(storeSuspectInfor);
+    const { suspectArray, setSuspectArray } = useStore(storeSuspectInfor);
     const [isHover, setIsHover] = useState([false, false, false, false]);
+
+    useEffect(() => {
+        const fetchSuspects = async () => {
+            if (suspectArray) {
+                const result = await getSuspects();
+
+                setSuspectArray(result.data);
+            }
+        };
+
+        fetchSuspects();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <div className="flex justify-between w-11/12 h-full gap-4">
@@ -58,7 +72,7 @@ export default function CardComponent() {
                             <div className="font-[Pretendard-SemiBold]">
                                 특이사항
                             </div>
-                            <div className="">{val.suspectInfo}</div>
+                            <div className="">{val.suspectSpeciality}</div>
                         </div>
                     </div>
                 </Link>

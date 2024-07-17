@@ -1,6 +1,5 @@
-
-export function checkIsSolved(): Boolean{
-    if (localStorage.getItem('isSolved') === 'true') {
+export function checkIsSolved(): boolean {
+    if (localStorage.getItem("isSolved") === "true") {
         return true;
     }
     return false;

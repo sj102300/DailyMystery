@@ -3,9 +3,9 @@ import { useEffect, useRef, useState } from "react";
 import SuspectInfor from "./component/SuspectInfor";
 import { useStore } from "zustand";
 import storeSuspectInfor from "../../client/suspectInfor";
-import { getSuspects } from "../../apis/getSuspects";
 import { postSuspectsQuestion } from "../../apis/postSuspectsQuestion";
 import { Suspect } from "../..";
+import { getSuspectsNumber } from "../../apis/getSuspectsNumber";
 
 export default function SuspectNumber() {
     const { suspectNumber } = useParams();
@@ -29,7 +29,7 @@ export default function SuspectNumber() {
             setInputValue("");
             setChatList((prevList) => [...prevList, question]);
             const result = await postSuspectsQuestion(stringToNumber, question);
-            console.log(result);
+
             // if(result){
             //     setChatList(chatList[chatList.length - 1])
             // }
@@ -44,7 +44,7 @@ export default function SuspectNumber() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await getSuspects(stringToNumber);
+            const result = await getSuspectsNumber(stringToNumber);
 
             if (result.statusCode === 200) {
                 setFirstLine(result.data.firstLine);
