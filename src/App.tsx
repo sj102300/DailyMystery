@@ -71,7 +71,7 @@ export default function App() {
                         element={<SuspectNumber />}
                     />
                     <Route path="/main/evidence" element={<Evidence />} />
-                    <Route path="deduction" element={<Deduction />} />
+                    <Route path="/main/deduction" element={<Deduction />} />
                     <Route path="/ending" element={<Ending />} />
                 </Routes>
             </div>

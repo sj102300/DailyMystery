@@ -15,7 +15,7 @@ export default function Aside() {
     let location = useLocation();
     let main, evidence;
 
-    if (location.pathname === '/main'){
+    if (location.pathname === '/main' || '/main/deduction'){
         main = selected;
         evidence = notSelected;
     }
