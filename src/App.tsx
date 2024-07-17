@@ -1,18 +1,22 @@
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
-import backgroundImageUrl from "./imgs/background_image.png";
+// import backgroundImageUrl from "./imgs/background_image.png";
 import Main from "./Main/Main.tsx";
 import Aside from "./Main/Aside.tsx";
 import Deduction from "./Deduction/Deduction.tsx";
 import SuspectNumber from "./Main/SuspectNumber/SuspectNumber.tsx";
 import Intro from "./Intro/intro.tsx";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Story from "./Story/story.tsx";
 import Evidence from "./Main/Evidences/Evidence.tsx";
-import Ending from "./Ending/ending.tsx";
+import { GetBackgroundImage } from "./apis/getBackground.ts";
+import EndingPage from "./Ending/EndingPage.tsx";
+
 
 export default function App() {
     const location = useLocation();
     let navigate = useNavigate();
+
+    let [backgroundImageUrl, setBackgroundImageUrl] = useState<string>('');
 
     useEffect(() => {
         //12시 넘어가면 새 문제 풀수있음. 초기화 과정
@@ -30,6 +34,15 @@ export default function App() {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+
+    useEffect(()=>{
+        let fetchData = async () => {
+            let data = await GetBackgroundImage();
+            setBackgroundImageUrl(data);
+        }
+        fetchData();
+    },[])
 
     return (
         <div className="relative flex w-full h-full min-h-screen">
@@ -60,8 +73,8 @@ export default function App() {
                         element={<SuspectNumber />}
                     />
                     <Route path="/main/evidence" element={<Evidence />} />
-                    <Route path="deduction" element={<Deduction />} />
-                    <Route path="/ending" element={<Ending />} />
+                    <Route path="/main/deduction" element={<Deduction />} />
+                    <Route path="/ending" element={<EndingPage />} />
                 </Routes>
             </div>
         </div>

@@ -35,6 +35,7 @@ export default function SuspectNumber() {
                 let buffer = "";
                 let currentMessage = "";
 
+<<<<<<< HEAD
                 setChatList((prevList) => [...prevList, ""]);
                 // eslint-disable-next-line no-constant-condition
                 while (true) {
@@ -81,6 +82,8 @@ export default function SuspectNumber() {
             }
         }
     };
+=======
+>>>>>>> cb00040184a86b88455ff40e1edba13e624bf612
 
     useEffect(() => {
         if (chatListRef.current) {
@@ -90,7 +93,9 @@ export default function SuspectNumber() {
 
     useEffect(() => {
         const fetchData = async () => {
+
             const result = await getSuspectsNumber(stringToNumber);
+
 
             if (result.statusCode === 200) {
                 setFirstLine(result.data.firstLine);

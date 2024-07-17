@@ -6,7 +6,7 @@ export async function GetResult(): Promise<Result | null> {
 
     try{
         let response: AxiosResponse<responseDTO<Result>>
-        = await  axios.get(`${import.meta.env.VITE_REACT_APP_BACK_URL}/api/main/result`);
+        = await axios.get(`${import.meta.env.VITE_REACT_APP_BACK_URL}/api/main/result`);
 
         if(response.data.statusCode === 200){
             return response.data.data;
