@@ -4,11 +4,13 @@ import { GetResult } from "./getResult";
 
 export default function EndingPage() {
 
-    let [result, setResult] = useState<Result | null>(null)
+    localStorage.setItem('isSolved', 'true');
 
+    let [result, setResult] = useState<Result | null>(null)
     useEffect(()=>{
         let fetchData = async () => {
             let data = await GetResult();
+            console.log(data);
             setResult(data);
         }
         fetchData();

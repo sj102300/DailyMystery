@@ -23,7 +23,7 @@ export default function Evidence(){
             <div className="text-white font-[Pretendard-SemiBold] text-xl">
                 사건현장의 증거를 확인해보세요
             </div>
-            <Link to={"/deduction"}>
+            <Link to={"/main/deduction"}>
                 <div className="px-10 py-3 text-center border-2 border-white cursor-pointer bg-mainColor rounded-2xl">
                     <div className="text-xl ">범인 추리하기</div>
                 </div>
