@@ -9,7 +9,10 @@ export async function postSuspectsQuestion(
 
     try {
         const response = await fetch(
-            `${import.meta.env.VITE_REACT_APP_BACK_PROXY}/api/suspects/${suspectNumber}/question`,
+            `${window.location.hostname === "localhost" 
+                ? import.meta.env.VITE_REACT_APP_BACK_URL
+                : import.meta.env.VITE_REACT_APP_BACK_PROXY
+            }/api/suspects/${suspectNumber}/question`,
             {
                 method: "POST",
                 headers: {
