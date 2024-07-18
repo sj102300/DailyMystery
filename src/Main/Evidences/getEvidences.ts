@@ -1,12 +1,13 @@
-import axios, { AxiosError, AxiosResponse } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 import { responseDTO } from "../..";
 import { Evidence } from "./evidence.type";
+import { apiClient } from "../../apis/apiClient";
 
 export async function GetEvidences(): Promise<Array<Evidence>> {
     try {
         let response: AxiosResponse<responseDTO<Array<Evidence>>> =
-            await axios.get(
-                `${import.meta.env.VITE_REACT_APP_BACK_URL}/api/evidences`,
+            await apiClient.get(
+                `/api/evidences`,
             );
 
         if (response.data.statusCode === 200) {

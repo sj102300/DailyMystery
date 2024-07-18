@@ -1,12 +1,14 @@
-import axios, { AxiosError, AxiosResponse } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 import { DMInfo } from "./intro.types";
 import { responseDTO } from "..";
+import { apiClient } from "../apis/apiClient";
 
 
 export async function getDMInfo(): Promise<DMInfo> {
 
     try{
-        let response: AxiosResponse<responseDTO<DMInfo>> = await axios.get(`${import.meta.env.VITE_REACT_APP_BACK_URL}/api/main`);
+        let response: AxiosResponse<responseDTO<DMInfo>> 
+        = await apiClient.get(`/api/main`);
         if (response.data.statusCode === 200) {
             return response.data.data;
         }

@@ -1,4 +1,5 @@
-import axios, { AxiosError, AxiosResponse } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
+import { apiClient } from "../apis/apiClient";
 
 export async function PostNickname(nickname: string): Promise<number> {
 
@@ -13,7 +14,7 @@ export async function PostNickname(nickname: string): Promise<number> {
         data: {
             userId: number;
         };
-       }> = await axios.post(`${import.meta.env.VITE_REACT_APP_BACK_URL}/api/user`, body);
+       }> = await apiClient.post(`/api/user`, body);
 
        if(response.data.statusCode === 200){
         return response.data.data.userId;

@@ -1,12 +1,12 @@
-import axios, { AxiosError, AxiosResponse } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 import { responseDTO, Suspect } from "..";
-
+import { apiClient } from '../apis/apiClient';
 
 export async function GetSuspectsInfo(): Promise<Suspect[]> {
 
     try{
         let response: AxiosResponse<responseDTO<Suspect[]>>
-        = await axios.get(`${import.meta.env.VITE_REACT_APP_BACK_URL}/api/suspects`);
+        = await apiClient.get(`/api/suspects`);
 
         if(response.data.statusCode === 200){
             console.log(response.data.data);

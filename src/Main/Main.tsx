@@ -3,8 +3,6 @@ import CardComponent from "./component/CardComponent";
 import { useEffect } from "react";
 import { checkIsSolved } from "../checkIsSolved";
 
-// import { getSuspects } from "../apis/getSuspects";
-
 export default function Main() {
     
     let navigate = useNavigate();

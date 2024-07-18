@@ -1,4 +1,4 @@
-import axios from "axios";
+import { apiClient } from "./apiClient";
 
 export async function getSuspectsNumber(suspectNumber: number) {
     let userId = localStorage.getItem("userId");
@@ -6,8 +6,8 @@ export async function getSuspectsNumber(suspectNumber: number) {
         userId = "454";
     }
     try {
-        const response = await axios.get(
-            `${import.meta.env.VITE_REACT_APP_BACK_URL}/api/suspects/${suspectNumber}`,
+        const response = await apiClient.get(
+            `/api/suspects/${suspectNumber}`,
             {
                 params: {
                     userId: userId,
