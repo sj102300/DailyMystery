@@ -26,8 +26,6 @@ export async function GetStroy(): Promise<string[]> {
         }>> = await axios.get(`${import.meta.env.VITE_REACT_APP_BACK_URL}/api/main/story`);
 
         if (response.data.statusCode === 200) {
-            console.log(response.data.data);
-            let data = splitToSentence(response.data.data.storyLine);
             return splitToSentence(response.data.data.storyLine);
         }
         else {

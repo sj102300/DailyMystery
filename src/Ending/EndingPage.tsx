@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Result } from './result.type';
 import { GetResult } from "./getResult";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { CaseBackground } from "./CaseBackground";
 import FirstReason from "./FirstReason";
 import SecondReason from "./SecondReason";
@@ -99,14 +99,3 @@ const Container = styled.div`
   overflow-y: scroll;
   scroll-behavior: smooth;
 `;
-
-const fadein = keyframes`
-    from { 
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to{
-        opacity: 1;
-        transform: translateY(0);
-    }
-`
