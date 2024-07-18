@@ -8,7 +8,7 @@ export async function GetBackgroundImage(): Promise<string> {
     try{
         let response: AxiosResponse<responseDTO<{
             backgroundImageUrl: string;
-        }>> = await axios.get(`https://43.202.161.19:8080/api/main/image`);
+        }>> = await axios.get(`https://seungjoo--magnificent-toffee-a9a8ae.netlify.app/api/main/image`);
 
         if (response.data.statusCode === 200){
             return response.data.data.backgroundImageUrl;
