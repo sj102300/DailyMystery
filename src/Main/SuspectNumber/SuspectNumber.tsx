@@ -6,6 +6,7 @@ import storeSuspectInfor from "../../client/suspectInfor";
 import { postSuspectsQuestion } from "../../apis/postSuspectsQuestion";
 import { Suspect } from "../..";
 import { getSuspectsNumber } from "../../apis/getSuspectsNumber";
+import { getUserChange } from "../../apis/getUserChange";
 
 export default function SuspectNumber() {
     const { suspectNumber } = useParams();
@@ -27,6 +28,8 @@ export default function SuspectNumber() {
         if (inputValue) {
             const question = inputValue;
             setInputValue("");
+            const cnt = await getUserChange();
+            console.log(cnt);
             setChatList((prevList) => [...prevList, question]);
             const result = await postSuspectsQuestion(stringToNumber, question);
             if (result !== undefined && result.body !== null) {
@@ -53,10 +56,7 @@ export default function SuspectNumber() {
                                     .trim();
                                 if (jsonString !== "[DONE]") {
                                     const eventData = JSON.parse(jsonString);
-                                    console.log(
-                                        typeof eventData.choices[0].delta
-                                            .content,
-                                    );
+
                                     if (
                                         typeof eventData.choices[0].delta
                                             .content === "string"

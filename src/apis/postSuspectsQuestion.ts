@@ -2,7 +2,10 @@ export async function postSuspectsQuestion(
     suspectNumber: number,
     inputValue: string,
 ) {
-    const userId = localStorage.getItem("userId");
+    let userId = localStorage.getItem("userId");
+    if (!userId) {
+        userId = "454";
+    }
 
     try {
         const response = await fetch(
