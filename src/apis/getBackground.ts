@@ -1,6 +1,6 @@
-import { AxiosError, AxiosResponse } from "axios";
+import axios, { AxiosError, AxiosResponse } from "axios";
 import { responseDTO } from "..";
-import { apiClient } from "./apiClient";
+// import { apiClient } from "./apiClient";
 
 
 export async function GetBackgroundImage(): Promise<string> {
@@ -8,7 +8,7 @@ export async function GetBackgroundImage(): Promise<string> {
     try{
         let response: AxiosResponse<responseDTO<{
             backgroundImageUrl: string;
-        }>> = await apiClient.get(`https://43.202.161.19:8080/api/main/image`);
+        }>> = await axios.get(`https://43.202.161.19:8080/api/main/image`);
 
         if (response.data.statusCode === 200){
             return response.data.data.backgroundImageUrl;
