@@ -1,11 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CardComponent from "./component/CardComponent";
 import { useEffect } from "react";
+import { checkIsSolved } from "../checkIsSolved";
 
 // import { getSuspects } from "../apis/getSuspects";
 
 export default function Main() {
-    useEffect(() => {}, []);
+    
+    let navigate = useNavigate();
+
+    //풀었는지 확인
+    useEffect(() => {
+        checkIsSolved() ? navigate('/') : null;
+    }, []);
 
     return (
         <div className="z-10 flex flex-col items-center w-full gap-6 py-32 h-dvh">
