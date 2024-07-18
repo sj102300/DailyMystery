@@ -1,14 +1,13 @@
-import axios, { AxiosError, AxiosResponse } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 import { responseDTO } from "..";
-// import { apiClient } from "./apiClient";
-
+import { apiClient } from "./apiClient";
 
 export async function GetBackgroundImage(): Promise<string> {
 
     try{
         let response: AxiosResponse<responseDTO<{
             backgroundImageUrl: string;
-        }>> = await axios.get(`https://seungjoo--magnificent-toffee-a9a8ae.netlify.app/api/main/image`);
+        }>> = await apiClient.get(`/api/main/image`);
 
         if (response.data.statusCode === 200){
             return response.data.data.backgroundImageUrl;

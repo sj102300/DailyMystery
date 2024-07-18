@@ -1,6 +1,7 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 import { responseDTO } from "..";
 import { Victim } from "../Intro/intro.types";
+import { apiClient } from "../apis/apiClient";
 
 function splitToSentence(storyLine: string): Array<string> {
     const sentenceEndings = /([.!?])\s*(?=[A-Z가-힣])/g;
@@ -23,7 +24,7 @@ export async function GetStroy(): Promise<string[]> {
     try {
         let response: AxiosResponse<responseDTO<{
             storyLine: string;
-        }>> = await axios.get(`${import.meta.env.VITE_REACT_APP_BACK_URL}/api/main/story`);
+        }>> = await apiClient.get(`/api/main/story`);
 
         if (response.data.statusCode === 200) {
             return splitToSentence(response.data.data.storyLine);
