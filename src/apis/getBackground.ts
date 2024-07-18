@@ -1,5 +1,6 @@
-import axios, { AxiosError, AxiosResponse } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 import { responseDTO } from "..";
+import { apiClient } from "./apiClient";
 
 
 export async function GetBackgroundImage(): Promise<string> {
@@ -7,7 +8,7 @@ export async function GetBackgroundImage(): Promise<string> {
     try{
         let response: AxiosResponse<responseDTO<{
             backgroundImageUrl: string;
-        }>> = await axios.get(`${import.meta.env.VITE_REACT_APP_BACK_URL}/api/main/image`);
+        }>> = await apiClient.get(`${import.meta.env.VITE_REACT_APP_BACK_URL}/api/main/image`);
 
         if (response.data.statusCode === 200){
             return response.data.data.backgroundImageUrl;
