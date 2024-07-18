@@ -1,4 +1,4 @@
-import axios, { AxiosError, AxiosResponse } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 import { responseDTO } from "..";
 import { Victim } from "../Intro/intro.types";
 import { apiClient } from "../apis/apiClient";
@@ -48,7 +48,7 @@ export async function GetVictim(): Promise<Victim | null> {
 
     try{
         let response: AxiosResponse<responseDTO<Victim>>
-        = await axios.get(`${import.meta.env.VITE_REACT_APP_BACK_URL}/api/main`);
+        = await apiClient.get(`/api/main`);
         
         if (response.data.statusCode === 200){
             return response.data.data;
