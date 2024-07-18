@@ -144,7 +144,7 @@ export default function SuspectNumber() {
                     <input
                         type="text"
                         maxLength={120}
-                        placeholder="질문 기회는 총 5번이며 최대 120자 내로 질문할 수 있습니다."
+                        placeholder="질문 기회는 총 10번이며 최대 120자 내로 질문할 수 있습니다."
                         className="w-full h-full rounded-3xl bg-[#e3e3e3] pl-4 pr-16 outline-none"
                         value={inputValue}
                         onChange={(event) => setInputValue(event.target.value)}

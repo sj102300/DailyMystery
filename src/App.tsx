@@ -20,7 +20,8 @@ export default function App() {
 
     useEffect(() => {
         //12시 넘어가면 새 문제 풀수있음. 초기화 과정
-        let today = new Date().toISOString().split("T")[0];
+        let offset = new Date().getTimezoneOffset() * 60000;
+        let today = new Date(Date.now() - offset).toISOString().split("T")[0];
         let currentDate = localStorage.getItem("currentDate");
         if (currentDate !== today) {
             localStorage.clear();

@@ -2,9 +2,10 @@ import { apiClient } from "./apiClient";
 
 export async function getUserChange() {
     let userId = localStorage.getItem("userId");
-    if (!userId) {
-        userId = "454";
-    }
+
+    if (!userId)
+        return;
+
     try {
         const response = await apiClient.get(
             `/api/user/chance`,
