@@ -3,7 +3,6 @@ import styled, { keyframes } from "styled-components"
 import { checkIsSolved } from "../checkIsSolved"
 import { Link, useNavigate } from "react-router-dom"
 import { GetStroy, GetVictim } from "./getStory";
-import ReactDOM from 'react-dom';
 
 export default function Story() {
 
@@ -15,7 +14,8 @@ export default function Story() {
     }, [])
 
     let [storyLine, setStoryLine] = useState<Array<string>>([]);
-    let [victim, setVictim] = useState<string>('')
+    let [victim, setVictim] = useState<string>('');
+    let [textLine, setTextLine] = useState<React.ReactNode[]>([]);
 
     useEffect(()=>{
         let fetchData = async () => {
@@ -40,8 +40,7 @@ export default function Story() {
         if (currentLine < storyLine.length){
             const timer = setTimeout(()=>{
                 appendTextLine(storyLine[currentLine]);
-                setCurrentLine(prev => prev+1);
-                // setCurrentLine(prev => prev + 1);
+                setCurrentLine(prev => prev + 1);
             }, (storyLine[currentLine].length / 25 + 1) * 1000)
             return () => clearTimeout(timer);
         }
@@ -53,11 +52,17 @@ export default function Story() {
         }
     },[currentLine, storyLine])
 
-    const appendTextLine = (sentence: string) => {
-        let box = document.getElementById('box');
-        let textLine = document.createElement('p');
-        ReactDOM.render(<TextLine charsnum={sentence.length}>{sentence}</TextLine>, textLine)
-        box?.appendChild(textLine);
+    //한줄씩 보임
+    // const appendTextLine = (sentence: string) => {
+    //     let box = document.getElementById('box');
+    //     if(!box) return;
+    //     const root = createRoot(box);
+    //     root.render(<TextLine charsnum={sentence.length}>{sentence}</TextLine>)
+    // }
+
+    const appendTextLine = (sentence:string) =>{
+        let newLine = <TextLine charsnum={sentence.length}>{sentence}</TextLine>;
+        setTextLine(prev => [...prev, newLine]);
     }
 
     return (
@@ -67,7 +72,9 @@ export default function Story() {
                 <TextLine charsnum={victim?.length}>
                     {victim}
                 </TextLine>
-                {/* 여기에 다음 문장들 들어옴 */}
+                {
+                    textLine.map((value) => value)
+                }
                 {
                     next && <Link to='/main'><Next>&gt;</Next></Link>
                 }
