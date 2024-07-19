@@ -57,19 +57,22 @@ export default function Intro() {
                                     내일 새로운 미스터리로 다시 만나요 :)
                                 </p>
                             </Box>
-                            <Button>내일의 미스터리 알림 받기</Button>
                         </>
-                        :<>
+                        : <>
                             <Box>
-                                <h1 className="text-3xl text-black">DM: Daily Mystery</h1>
-                                <p className="text-2xl text-black">
+                                <h1 className="text-3xl text-black opacity-85">DM: Daily Mystery</h1>
+                                <p className="text-2xl text-black opacity-85">
                                     {DMInfo?.weather},<br />
                                     {DMInfo?.place}에서<br />
                                     {DMInfo?.time}의 미스터리
                                 </p>
                             </Box>
                             <Input ref={nicknameRef} placeholder="닉네임 입력하기.." />
-                            <Button onClick={handleClick}>오늘의 미스터리 풀어보기</Button>
+                            <div
+                                onClick={handleClick}
+                                className="px-8 py-2 text-center cursor-pointer bg-mainColor rounded-2xl">
+                                <div className="text-xl">오늘의 미스터리 풀어보기</div>
+                            </div>
                         </>
                 }
 
@@ -104,8 +107,7 @@ const Box = styled.div`
         border-radius: 15px;
         width: 470px;
         height:250px;
-        background-color: #D9D9D9;
-        opacity: 40%;
+        background-color: rgba(217,217,217,0.4);
         text-align: center;
 
         display: flex;
@@ -119,8 +121,8 @@ const Input = styled.input.attrs({ type: "text" })`
         border-radius: 15px;
         background-color: #2c2c2c;
         color: #ffffff;
-        width: 250px;
-        padding: 8px 8px;
+        width: 300px;
+        padding: 10px 15px;
         color: white;
         font-size: large;
 
@@ -129,13 +131,3 @@ const Input = styled.input.attrs({ type: "text" })`
             outline:none;
         }
 `
-
-
-const Button = styled.button`
-        border-radius: 15px;
-        background-color: #2c2c2c;
-        color: #ffffff;
-        width: 200px;
-        padding:8px 0;
-        text-align: center;
-    `
