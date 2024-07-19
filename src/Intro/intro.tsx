@@ -57,6 +57,11 @@ export default function Intro() {
                                     내일 새로운 미스터리로 다시 만나요 :)
                                 </p>
                             </Box>
+                            <div
+                                onClick={()=>navigate('/ending')}
+                                className="px-8 py-2 text-center cursor-pointer bg-mainColor rounded-2xl">
+                                <div className="text-xl">엔딩 다시보기</div>
+                            </div>
                         </>
                         : <>
                             <Box>

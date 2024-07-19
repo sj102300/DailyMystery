@@ -120,8 +120,6 @@ const Next = styled.div`
 
 `
 
-
-
 const Box = styled.div`
     width: 800px;
     height: 100dvh;
