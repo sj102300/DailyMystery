@@ -28,8 +28,11 @@ export default function SuspectNumber() {
         if (inputValue) {
             const question = inputValue;
             setInputValue("");
-            const cnt = await getUserChange();
-            console.log(cnt);
+            const icChanceLeft = await getUserChange();
+            if (!icChanceLeft) {
+                alert('심문 횟수가 10번을 초과했습니다!');
+                return;
+            }
             setChatList((prevList) => [...prevList, question]);
             const result = await postSuspectsQuestion(stringToNumber, question);
             if (result !== undefined && result.body !== null) {
