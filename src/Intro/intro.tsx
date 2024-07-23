@@ -4,17 +4,14 @@ import { getDMInfo } from "./getIntro";
 import { DMInfo } from "./intro.types";
 import { useNavigate } from "react-router-dom";
 import { PostNickname } from "./postNickname";
-import { checkIsSolved } from "../checkIsSolved";
 
-export default function Intro() {
+export default function Intro({ isSolved }: {
+    isSolved: Boolean;
+}) {
 
     let navigate = useNavigate();
 
-    let [isSolved, setIsSolved] = useState<Boolean>(false);
-
     useEffect(() => {
-        //풀었으면 더이상 못풀게
-        setIsSolved(checkIsSolved());
 
         //오늘의 미스터리 정보 가져오기
         let fetchData = async () => {

@@ -10,12 +10,14 @@ import Story from "./Story/story.tsx";
 import Evidence from "./Main/Evidences/Evidence.tsx";
 import { GetBackgroundImage } from "./apis/getBackground.ts";
 import EndingPage from "./Ending/EndingPage.tsx";
+import { checkIsSolved } from "./checkIsSolved.ts";
 
 
 export default function App() {
     const location = useLocation();
     let navigate = useNavigate();
 
+    let [isSolved, setIsSolved] = useState<boolean>(false);
     let [backgroundImageUrl, setBackgroundImageUrl] = useState<string>('');
 
     useEffect(() => {
@@ -23,10 +25,13 @@ export default function App() {
         let offset = new Date().getTimezoneOffset() * 60000;
         let today = new Date(Date.now() - offset).toISOString().split("T")[0];
         let currentDate = localStorage.getItem("currentDate");
+        console.log(today, currentDate);
         if (currentDate !== today) {
             localStorage.clear();
         }
         localStorage.setItem("currentDate", today);
+
+        setIsSolved(checkIsSolved());
 
         //유저가 풀던 기록있으면 바로 메인페이지로
         let userId = Number(localStorage.getItem("userId"));
@@ -66,7 +71,7 @@ export default function App() {
                 }}
             >
                 <Routes>
-                    <Route path="/" element={<Intro />} />
+                    <Route path="/" element={<Intro isSolved={isSolved}/>} />
                     <Route path="/story" element={<Story />} />
                     <Route path="main" element={<Main />} />
                     <Route
