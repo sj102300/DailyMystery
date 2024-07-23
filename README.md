@@ -1,7 +1,2 @@
+DM(Daily Mystery) - 매일매일 새로운 추리게임
 
-git add .
-git commit
-git push origin seungJoo
-git push myrepo seungJoo
-
-----
