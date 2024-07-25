@@ -8,8 +8,8 @@
 
 [시연영상 바로가기](https://www.youtube.com/watch?v=hf4fHv8SU2k)
 
-[프론트 레포지토리](https://github.com/sj102300/SWDigital) 
-[백엔드 레포지토리](https://github.com/namewhat99/docker-ci-cd) 
+[프론트 레포지토리](https://github.com/sj102300/SWDigital) | 
+[백엔드 레포지토리](https://github.com/namewhat99/docker-ci-cd) | 
 [AI 레포지토리](https://github.com/jeonghani/2024_SW)
 
 <br/>
