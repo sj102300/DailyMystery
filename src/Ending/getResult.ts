@@ -4,22 +4,19 @@ import { Result } from "./result.type";
 import { apiClient } from "../apis/apiClient";
 
 export async function GetResult(): Promise<Result | null> {
+    try {
+        let response: AxiosResponse<responseDTO<Result>> =
+            await apiClient.get(`/api/main/result`);
 
-    try{
-        let response: AxiosResponse<responseDTO<Result>>
-        = await apiClient.get(`/api/main/result`);
-
-        if(response.data.statusCode === 200){
+        if (response.data.statusCode === 200) {
             return response.data.data;
-        }
-        else{
+        } else {
             throw AxiosError<{
-                statusCode: Number;
-                message: String;
-            }>
+                statusCode: number;
+                message: string;
+            }>;
         }
-    }
-    catch(err){
+    } catch (err) {
         console.log(err);
         return null;
     }
