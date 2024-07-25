@@ -12,31 +12,18 @@ import { GetBackgroundImage } from "./apis/getBackground.ts";
 import EndingPage from "./Ending/EndingPage.tsx";
 import { checkIsSolved } from "./checkIsSolved.ts";
 
-<<<<<<< HEAD
-
-=======
->>>>>>> ryu
 export default function App() {
     const location = useLocation();
     let navigate = useNavigate();
 
     let [isSolved, setIsSolved] = useState<boolean>(false);
-<<<<<<< HEAD
-    let [backgroundImageUrl, setBackgroundImageUrl] = useState<string>('');
-=======
     let [backgroundImageUrl, setBackgroundImageUrl] = useState<string>("");
->>>>>>> ryu
 
     useEffect(() => {
         //12시 넘어가면 새 문제 풀수있음. 초기화 과정
         let offset = new Date().getTimezoneOffset() * 60000;
         let today = new Date(Date.now() - offset).toISOString().split("T")[0];
         let currentDate = localStorage.getItem("currentDate");
-<<<<<<< HEAD
-        console.log(today, currentDate);
-=======
-
->>>>>>> ryu
         if (currentDate !== today) {
             localStorage.clear();
         }
@@ -52,16 +39,6 @@ export default function App() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-<<<<<<< HEAD
-
-    useEffect(()=>{
-        let fetchData = async () => {
-            let data = await GetBackgroundImage();
-            setBackgroundImageUrl(data);
-        }
-        fetchData();
-    },[])
-=======
     useEffect(() => {
         let fetchData = async () => {
             let data = await GetBackgroundImage();
@@ -69,7 +46,6 @@ export default function App() {
         };
         fetchData();
     }, []);
->>>>>>> ryu
 
     return (
         <div className="relative flex w-full h-full min-h-screen">
@@ -92,11 +68,7 @@ export default function App() {
                 }}
             >
                 <Routes>
-<<<<<<< HEAD
-                    <Route path="/" element={<Intro isSolved={isSolved}/>} />
-=======
                     <Route path="/" element={<Intro isSolved={isSolved} />} />
->>>>>>> ryu
                     <Route path="/story" element={<Story />} />
                     <Route path="main" element={<Main />} />
                     <Route
@@ -104,11 +76,7 @@ export default function App() {
                         element={<SuspectNumber />}
                     />
                     <Route path="/main/evidence" element={<Evidence />} />
-<<<<<<< HEAD
-                    <Route path="/main/deduction" element={<Deduction />} />
-=======
                     <Route path="/deduction" element={<Deduction />} />
->>>>>>> ryu
                     <Route path="/ending" element={<EndingPage />} />
                 </Routes>
             </div>

@@ -2,14 +2,6 @@ import SuspectsCard from "./Cards";
 import { useEffect, useState } from "react";
 import { GetSuspectsInfo } from "./getSuspectInfo";
 import { Suspect } from "..";
-<<<<<<< HEAD
-import { Link } from 'react-router-dom';
-
-export default function Deduction() {
-
-    let [suspects, setSuspects] = useState<Suspect[]>([]);
-    let [selected, setSelected] = useState<number>(-1);
-=======
 import { Link } from "react-router-dom";
 import { useStore } from "zustand";
 import useStoryLine from "../client/storyLine";
@@ -24,21 +16,11 @@ export default function Deduction() {
     const [isModal, setIsModal] = useState(false);
     const [conversation, setConversation] = useState(true);
     const [suspectId, setSuspectId] = useState<number>(-1);
->>>>>>> ryu
 
     useEffect(() => {
         let fetchData = async () => {
             let data = await GetSuspectsInfo();
             setSuspects(data);
-<<<<<<< HEAD
-        }
-        fetchData();
-    }, [])
-
-    return (
-        <div className="z-10 flex flex-col items-center w-full gap-6 py-32 h-dvh">
-            <SuspectsCard suspects={suspects} selected={selected} setSelected={setSelected} />
-=======
         };
         fetchData();
     }, []);
@@ -55,27 +37,15 @@ export default function Deduction() {
                 selected={selected}
                 setSelected={setSelected}
             />
->>>>>>> ryu
             <div className="text-white font-[Pretendard-SemiBold] text-xl">
                 누가 범인인가요? 범인을 선택해주세요
             </div>
             <div className="flex flex-row gap-4">
-<<<<<<< HEAD
-                <Link to={'/ending'}>
-=======
                 <Link to={"/ending"}>
->>>>>>> ryu
                     <div className="px-10 py-3 text-center border-2 border-white cursor-pointer bg-mainColor rounded-2xl">
                         <div className="text-xl">제출하기</div>
                     </div>
                 </Link>
-<<<<<<< HEAD
-                <Link to={'/main'}>
-                    <div className="px-10 py-3 text-center border-2 border-white cursor-pointer bg-mainColor rounded-2xl">
-                        <div className="text-xl" >더 둘러보기</div>
-                    </div>
-                </Link>
-=======
                 <div
                     className="absolute flex items-center justify-center rounded-full cursor-pointer bg-mainColor bottom-6 right-6 size-14"
                     onClick={() => setIsModal(true)}
@@ -162,7 +132,6 @@ export default function Deduction() {
                         </svg>
                     </div>
                 )}
->>>>>>> ryu
             </div>
         </div>
     );

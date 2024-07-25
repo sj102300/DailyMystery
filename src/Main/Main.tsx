@@ -1,17 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
 import CardComponent from "./component/CardComponent";
-<<<<<<< HEAD
-import { useEffect } from "react";
-import { checkIsSolved } from "../checkIsSolved";
-
-export default function Main() {
-    
-    let navigate = useNavigate();
-
-    //풀었는지 확인
-    useEffect(() => {
-        checkIsSolved() ? navigate('/') : null;
-=======
 import { useEffect, useState } from "react";
 import { checkIsSolved } from "../checkIsSolved";
 import { useStore } from "zustand";
@@ -36,7 +24,6 @@ export default function Main() {
 
         initial();
         // eslint-disable-next-line react-hooks/exhaustive-deps
->>>>>>> ryu
     }, []);
 
     return (
@@ -45,13 +32,6 @@ export default function Main() {
             <div className="text-white font-[Pretendard-SemiBold] text-xl">
                 용의자를 선택하여 심문하세요
             </div>
-<<<<<<< HEAD
-            <Link to={"/main/deduction"}>
-                <div className="px-10 py-3 text-center border-2 border-white cursor-pointer bg-mainColor rounded-2xl">
-                    <div className="text-xl ">범인 추리하기</div>
-                </div>
-            </Link>
-=======
             <Link to={"/deduction"}>
                 <div className="px-10 py-3 text-center border-2 border-white cursor-pointer bg-mainColor rounded-2xl">
                     <div className="text-xl font-[Pretendard-SemiBold]">
@@ -103,7 +83,6 @@ export default function Main() {
                     </div>
                 </div>
             )}
->>>>>>> ryu
         </div>
     );
 }
