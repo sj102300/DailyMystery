@@ -30,7 +30,11 @@ export default function SuspectNumber() {
             setInputValue("");
             const icChanceLeft = await getUserChange();
             if (!icChanceLeft) {
+<<<<<<< HEAD
                 alert('심문 횟수가 10번을 초과했습니다!');
+=======
+                alert("심문 횟수가 10번을 초과했습니다!");
+>>>>>>> ryu
                 return;
             }
             setChatList((prevList) => [...prevList, question]);
@@ -113,7 +117,11 @@ export default function SuspectNumber() {
                     </div>
                 </div>
                 <div
+<<<<<<< HEAD
                     className="border-b-[1px] border-b-[#c1c1c1] w-full h-3/4 overflow-scroll text-mainColor"
+=======
+                    className="border-b-[1px] border-b-[#c1c1c1] w-full h-3/4 overflow-scroll text-mainColor pb-6"
+>>>>>>> ryu
                     ref={chatListRef}
                 >
                     {chatList.map((val, idx) =>
@@ -158,7 +166,11 @@ export default function SuspectNumber() {
                         viewBox="0 0 40 40"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
+<<<<<<< HEAD
                         className="absolute cursor-pointer right-3 top-[10%]"
+=======
+                        className="absolute cursor-pointer right-3 top-1/2 translate-y-[-50%]"
+>>>>>>> ryu
                         onClick={onsubmitConversation}
                     >
                         <path

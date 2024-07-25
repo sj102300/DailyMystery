@@ -2,7 +2,10 @@ import { useState } from "react";
 import { Evidence } from "./evidence.type";
 
 export default function Cards({ evidences }: { evidences: Evidence[] }) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> ryu
     const [isHover, setIsHover] = useState([false, false, false, false]);
 
     return (
@@ -43,7 +46,13 @@ export default function Cards({ evidences }: { evidences: Evidence[] }) {
                             className={`font-[Pretendard-SemiBold] transition-all duration-500 ${
                                 isHover[idx] ? "text-xl" : "text-lg"
                             }`}
+<<<<<<< HEAD
                         >{val.evidenceName}</div>
+=======
+                        >
+                            {val.evidenceName}
+                        </div>
+>>>>>>> ryu
                         <div
                             className={`flex flex-col transition-opacity duration-500 ${
                                 isHover[idx]
