@@ -116,7 +116,7 @@ const Background = styled.div`
     left: 0;
     width: 100%;
     height: 100dvh;
-    background-color: #333232;
+    background-color: #000000;
     opacity: 40%;
     z-index: -1;
 `;

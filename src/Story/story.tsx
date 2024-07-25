@@ -89,7 +89,6 @@ export default function Story() {
             <Background />
             <Box
                 id="box"
-                className="text-[#1e1e1e] font-[Pretendard-SemiBold] p-4"
             >
                 <TextLine charsnum={victim?.length}>{victim}</TextLine>
                 {textLine.map((value) => value)}
@@ -108,7 +107,7 @@ const Background = styled.div`
     left: 0;
     width: 100%;
     height: 100dvh;
-    background-color: #333232;
+    background-color: #000000;
     opacity: 40%;
     z-index: -1;
 `;
@@ -141,7 +140,7 @@ const Next = styled.div`
 `;
 
 const Box = styled.div`
-    background-color: rgba(255, 255, 255, 0.5);
+    /* background-color: rgba(255, 255, 255, 0.3); */
     filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15));
     display: flex;
     flex-direction: column;

@@ -7,12 +7,15 @@ import FirstReason from "./FirstReason";
 import SecondReason from "./SecondReason";
 import { Link } from "react-router-dom";
 
-export default function EndingPage() {
+export default function EndingPage({ setIsSolved }: {
+    setIsSolved: (isSolved: boolean) => void;
+}) {
 
     localStorage.setItem('isSolved', 'true');
 
     let [result, setResult] = useState<Result | null>(null)
     useEffect(()=>{
+        setIsSolved(true);
         let fetchData = async () => {
             let data = await GetResult();
             setResult(data);
@@ -94,7 +97,7 @@ const Background = styled.div`
     left:0;
     width: 100%;
     height: 100dvh;
-    background-color: #333232;
+    background-color: #000000;
     opacity: 40%;
     z-index: -1;
 `

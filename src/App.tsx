@@ -77,7 +77,7 @@ export default function App() {
                     />
                     <Route path="/main/evidence" element={<Evidence />} />
                     <Route path="/deduction" element={<Deduction />} />
-                    <Route path="/ending" element={<EndingPage />} />
+                    <Route path="/ending" element={<EndingPage setIsSolved={setIsSolved}/>} />
                 </Routes>
             </div>
         </div>
