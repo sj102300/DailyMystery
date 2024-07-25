@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 ## 💡 DM: Daily Mystery
 
@@ -8,6 +7,10 @@
 
 
 [시연영상 바로가기](https://www.youtube.com/watch?v=hf4fHv8SU2k)
+
+[프론트 레포지토리](https://github.com/sj102300/SWDigital) 
+[백엔드 레포지토리](https://github.com/namewhat99/docker-ci-cd) 
+[AI 레포지토리](https://github.com/jeonghani/2024_SW)
 
 <br/>
 
@@ -64,9 +67,3 @@ AI: [정한이](https://github.com/jeonghani)
 React.ts로 클라이언트 구축 / Springboot + MySQL로 서버 구축
 
 GPT 응답 stream 형태로 전달 → 실시간으로 소통하는 챗봇 구현
-    
-=======
-DM(Daily Mystery) - 매일매일 새로운 추리게임
-
-각자 작업한거 각자 브랜치에 푸쉬 -> main에 머지 -> 오류 및 충돌없으면 Deploy에 푸쉬
->>>>>>> ryu
