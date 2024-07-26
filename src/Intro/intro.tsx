@@ -59,9 +59,9 @@ export default function Intro({ isSolved }: { isSolved: boolean }) {
                 {isSolved ? (
                     <>
                         <Box>
-                            <h1 className="text-3xl text-black">
+                            {/* <h1 className="text-3xl text-black">
                                 DM: Daily Mystery
-                            </h1>
+                            </h1> */}
                             <p className="text-2xl text-black">
                                 오늘의 미스터리를 해결하셨네요!
                                 <br />

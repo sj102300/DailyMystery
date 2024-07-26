@@ -79,13 +79,6 @@ export default function Story() {
 
     return (
         <div className="relative flex flex-col items-center justify-center w-full h-dvh">
-            <img
-                src="./logo.png"
-                alt="로고사진"
-                width="150px"
-                height="150px"
-                className="absolute top-20"
-            />
             <Background />
             <Box
                 id="box"

@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import SuspectInfor from "./component/SuspectInfor";
 import { useStore } from "zustand";
@@ -12,6 +12,7 @@ export default function SuspectNumber() {
     const { suspectNumber } = useParams();
     const stringToNumber = Number(suspectNumber);
     const { suspectArray } = useStore(storeSuspectInfor);
+
     // chatList scroll 될떄마다 스크롤 위치 바꾸기 위해서 ref를 갖고오고 변경되면 그떄에 따라 스크롤 위치 바꾸기
     const chatListRef = useRef<HTMLDivElement>(null);
 
@@ -23,6 +24,8 @@ export default function SuspectNumber() {
         (val) => val.suspectNumber === stringToNumber,
     ) as Suspect;
 
+    let navigate = useNavigate();
+
     const onsubmitConversation = async (event: React.FormEvent) => {
         event.preventDefault();
         if (inputValue) {
@@ -31,6 +34,7 @@ export default function SuspectNumber() {
             const icChanceLeft = await getUserChange();
             if (!icChanceLeft) {
                 alert("심문 횟수가 10번을 초과했습니다!");
+                navigate('/deduction');
                 return;
             }
             setChatList((prevList) => [...prevList, question]);
