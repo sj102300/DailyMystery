@@ -67,3 +67,9 @@ AI: [정한이](https://github.com/jeonghani)
 React.ts로 클라이언트 구축 / Springboot + MySQL로 서버 구축
 
 GPT 응답 stream 형태로 전달 → 실시간으로 소통하는 챗봇 구현
+
+
+
+
+## 🛠️ 리팩토링 및 회의록
+### [1주차](https://github.com/namewhat99/mystery/wiki/1%EC%A3%BC%EC%B0%A8-%ED%9A%8C%EC%9D%98%EB%A1%9D)
